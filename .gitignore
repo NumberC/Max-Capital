@@ -1,0 +1,13 @@
+# Import cache
+.import/
+
+# Binaries
+bin/
+build/
+lib/
+
+#Godot Folders
+.import/
+*.translation
+export_presets.cfg
+.mono/

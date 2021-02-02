@@ -1,0 +1,87 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Die",
+"language": "GDScript",
+"path": "res://Scripts/Die.gd"
+}, {
+"base": "Node",
+"class": "District",
+"language": "GDScript",
+"path": "res://Scripts/District.gd"
+}, {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+}, {
+"base": "Node",
+"class": "Map",
+"language": "GDScript",
+"path": "res://Scripts/Map.gd"
+}, {
+"base": "Node",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
+}, {
+"base": "Node",
+"class": "Shop",
+"language": "GDScript",
+"path": "res://Scripts/Shop.gd"
+}, {
+"base": "Node",
+"class": "ShopPricer",
+"language": "GDScript",
+"path": "res://Scripts/ShopPricer.gd"
+}, {
+"base": "Node",
+"class": "Stock",
+"language": "GDScript",
+"path": "res://Scripts/Stock.gd"
+}, {
+"base": "Node",
+"class": "StockPricer",
+"language": "GDScript",
+"path": "res://Scripts/StockPricer.gd"
+}, {
+"base": "Node",
+"class": "Suit",
+"language": "GDScript",
+"path": "res://Scripts/Suit.gd"
+} ]
+_global_script_class_icons={
+"Die": "",
+"District": "",
+"GitAPI": "",
+"Map": "",
+"Player": "",
+"Shop": "",
+"ShopPricer": "",
+"Stock": "",
+"StockPricer": "",
+"Suit": ""
+}
+
+[application]
+
+config/name="Max Capital"
+run/main_scene="res://Scenes/Menu.tscn"
+config/icon="res://icon.png"
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
