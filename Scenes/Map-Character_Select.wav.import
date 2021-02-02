@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Map-Character_Select.wav-af0b1c00f3b67a668f5a092aaf3dd597.sample"
+
+[deps]
+
+source_file="res://Scenes/Map-Character_Select.wav"
+dest_files=[ "res://.import/Map-Character_Select.wav-af0b1c00f3b67a668f5a092aaf3dd597.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

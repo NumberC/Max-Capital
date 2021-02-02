@@ -15,10 +15,10 @@ func _ready():
 func _init():
 	#initialize all the shops in the district
 	shops = [
-		Shop.new(100, 200),
-		Shop.new(100, 200),
-		Shop.new(400, 900),
-		Shop.new(500, 1000)
+		Shop.new(100, 200, 500),
+		Shop.new(100, 200, 500),
+		Shop.new(400, 900, 500),
+		Shop.new(500, 1000, 500)
 	];
 	pass
 

@@ -4,14 +4,16 @@ class_name Shop
 const BUY_FACTOR = 5;
 var value : float setget setValue, getValue;
 var price : float setget setPrice, getPrice;
+var maxCapital : float setget setMaxCapital, getMaxCapital;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 	
-func _init(givenPrice : float, givenValue : float):
-	price = givenPrice;
-	value = givenValue;
+func _init(price : float, value : float):
+	self.price = price;
+	self.value = value;
+	self.maxCapital = 0.5 * value;
 	pass
 
 func setPrice(newPrice : float):
@@ -29,6 +31,11 @@ func getValue() -> float:
 func getBuyPrice() -> float:
 	return BUY_FACTOR * value;
 
+func setMaxCapital(newMaxCapital : float):
+	maxCapital = newMaxCapital;
+
+func getMaxCapital() -> float:
+	return maxCapital;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
