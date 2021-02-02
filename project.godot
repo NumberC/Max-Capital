@@ -53,11 +53,6 @@ _global_script_classes=[ {
 "class": "StockPricer",
 "language": "GDScript",
 "path": "res://Scripts/StockPricer.gd"
-}, {
-"base": "Node",
-"class": "Suit",
-"language": "GDScript",
-"path": "res://Scripts/Suit.gd"
 } ]
 _global_script_class_icons={
 "Die": "",
@@ -68,8 +63,7 @@ _global_script_class_icons={
 "Shop": "",
 "ShopPricer": "",
 "Stock": "",
-"StockPricer": "",
-"Suit": ""
+"StockPricer": ""
 }
 
 [application]

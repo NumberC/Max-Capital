@@ -18,7 +18,7 @@ func _ready():
 	#Generate districts with their suit
 	for i in range(DISTRICT_AMOUNT):
 		districts.append(District.new());
-		suits.append(Suit.new(Shape.new(), Color.red));
+		suits.append(Suit.new());
 	pass # Replace with function body.
 
 func _init():
