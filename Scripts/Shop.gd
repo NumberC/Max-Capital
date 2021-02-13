@@ -1,7 +1,6 @@
-extends Node
+extends Space
 class_name Shop
 
-const BUY_FACTOR = 5;
 var value : float setget setValue, getValue;
 var price : float setget setPrice, getPrice;
 var maxCapital : float setget setMaxCapital, getMaxCapital;
@@ -27,9 +26,6 @@ func setValue(newValue : float):
 
 func getValue() -> float:
 	return value;
-	
-func getBuyPrice() -> float:
-	return BUY_FACTOR * value;
 
 func setMaxCapital(newMaxCapital : float):
 	maxCapital = newMaxCapital;

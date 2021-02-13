@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="MenuButton" type="Button"]
+margin_right = 350.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

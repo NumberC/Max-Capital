@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Space",
+"class": "Bank",
+"language": "GDScript",
+"path": "res://Scripts/Spaces/Bank.gd"
+}, {
+"base": "Map",
+"class": "CustomMap",
+"language": "GDScript",
+"path": "res://Scripts/CustomMap.gd"
+}, {
 "base": "Node",
 "class": "Die",
 "language": "GDScript",
-"path": "res://Scripts/Die.gd"
+"path": "res://Scripts/Core/Die.gd"
 }, {
 "base": "Node",
 "class": "District",
@@ -35,6 +45,21 @@ _global_script_classes=[ {
 "path": "res://Scripts/Player.gd"
 }, {
 "base": "Node",
+"class": "PlayerController",
+"language": "GDScript",
+"path": "res://Scripts/PlayerController.gd"
+}, {
+"base": "Space",
+"class": "RollAgain",
+"language": "GDScript",
+"path": "res://Scripts/Spaces/RollAgain.gd"
+}, {
+"base": "Node",
+"class": "Round",
+"language": "GDScript",
+"path": "res://Scripts/Round.gd"
+}, {
+"base": "Space",
 "class": "Shop",
 "language": "GDScript",
 "path": "res://Scripts/Shop.gd"
@@ -42,35 +67,68 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ShopPricer",
 "language": "GDScript",
-"path": "res://Scripts/ShopPricer.gd"
+"path": "res://Scripts/ShopHandlers/ShopPricer.gd"
+}, {
+"base": "Node",
+"class": "ShopTransaction",
+"language": "GDScript",
+"path": "res://Scripts/ShopHandlers/ShopTransaction.gd"
+}, {
+"base": "Node",
+"class": "ShopUpgrade",
+"language": "GDScript",
+"path": "res://Scripts/ShopHandlers/ShopUpgrade.gd"
+}, {
+"base": "Node",
+"class": "Space",
+"language": "GDScript",
+"path": "res://Scripts/Core/Space.gd"
 }, {
 "base": "Node",
 "class": "Stock",
 "language": "GDScript",
-"path": "res://Scripts/Stock.gd"
+"path": "res://Scripts/Core/Stock.gd"
 }, {
 "base": "Node",
 "class": "StockPricer",
 "language": "GDScript",
-"path": "res://Scripts/StockPricer.gd"
+"path": "res://Scripts/StockHandlers/StockPricer.gd"
+}, {
+"base": "Node",
+"class": "StockTransaction",
+"language": "GDScript",
+"path": "res://Scripts/StockHandlers/StockTransaction.gd"
 } ]
 _global_script_class_icons={
+"Bank": "",
+"CustomMap": "",
 "Die": "",
 "District": "",
 "GitAPI": "",
 "Map": "",
 "Player": "",
+"PlayerController": "",
+"RollAgain": "",
+"Round": "",
 "Shop": "",
 "ShopPricer": "",
+"ShopTransaction": "",
+"ShopUpgrade": "",
+"Space": "",
 "Stock": "",
-"StockPricer": ""
+"StockPricer": "",
+"StockTransaction": ""
 }
 
 [application]
 
 config/name="Max Capital"
-run/main_scene="res://Scenes/Menu.tscn"
+run/main_scene="res://Assets/Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout=""
 
 [gdnative]
 

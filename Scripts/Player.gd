@@ -1,30 +1,37 @@
 extends Node
 class_name Player
 
-const Shop = preload("res://Scripts/Shop.gd");
-var stocks : Array setget ,getShops;
+var stocks : Dictionary = {} setget ,getStocks;
 var shops : Array;
 var suits : Array;
-var cash : float setget setCash, getCash;
-var networth : float setget setNetworth, getNetworth;
+var cash : int setget setCash, getCash;
+var networth : int setget setNetworth, getNetworth;
+var promotionLevel : int setget setPromotionLevel, getPromotionLevel;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func _init():
+func _init(name : String):
+	self.name = name;
 	pass
+
+func setPromotionLevel(newPromotion : int):
+	promotionLevel = newPromotion;
+
+func getPromotionLevel() -> int:
+	return promotionLevel;
 	
-func getCash() -> float:
+func getCash() -> int:
 	return cash;
 	
-func setCash(newCash : float):
+func setCash(newCash : int):
 	cash = newCash;
 	
-func getNetworth() -> float:
+func getNetworth() -> int:
 	return networth;
 	
-func setNetworth(newNetworth : float):
+func setNetworth(newNetworth : int):
 	networth = newNetworth;
 	
 func getShops() -> Array:
@@ -37,10 +44,11 @@ func removeShop(shop : Shop):
 	if shops.has(shop):
 		shops.remove(shops.find(shop));
 
-func getStocks() -> Array:
+func hasShop(shop : Shop):
+	return shops.has(shop);
+
+func getStocks() -> Dictionary:
 	return stocks;
-	
-#setStocks fuction
 	
 func getSuits() -> Array:
 	return suits;
@@ -48,9 +56,6 @@ func getSuits() -> Array:
 func addSuit(suit):
 	if !suits.has(suit):
 		suits.append(suit);
-		
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

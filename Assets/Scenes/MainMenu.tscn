@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/UIElements/MenuButton.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MenuButton" parent="." instance=ExtResource( 1 )]
+margin_left = 369.069
+margin_top = 119.896
+margin_right = 719.069
+margin_bottom = 199.896
+text = "Play"
+
+[node name="MenuButton2" parent="." instance=ExtResource( 1 )]
+margin_left = 369.068
+margin_top = 223.133
+margin_right = 719.068
+margin_bottom = 303.133
+text = "Game Settings"
+
+[node name="MenuButton3" parent="." instance=ExtResource( 1 )]
+margin_left = 369.652
+margin_top = 326.954
+margin_right = 719.652
+margin_bottom = 406.954
+text = "Leaderboard"
+
+[node name="MenuButton4" parent="." instance=ExtResource( 1 )]
+margin_left = 369.679
+margin_top = 430.032
+margin_right = 719.679
+margin_bottom = 510.032
+text = "Support"

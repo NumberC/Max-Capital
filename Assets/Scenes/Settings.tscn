@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/UIElements/MenuButton.tscn" type="PackedScene" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.25989
+margin_right = -1.25989
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" parent="." instance=ExtResource( 1 )]
+margin_left = 355.819
+margin_top = 166.708
+margin_right = 705.819
+margin_bottom = 246.708
+text = "Player Controls"
+
+[node name="MenuButton2" parent="." instance=ExtResource( 1 )]
+margin_left = 359.599
+margin_top = 295.22
+margin_right = 709.599
+margin_bottom = 375.22
+text = "Sound"
