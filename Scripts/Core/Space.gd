@@ -1,17 +1,29 @@
 extends Node
 class_name Space
 
-var options := ["Would you like to land here?"] setget ,getOptions;
-
 # Connect to other spaces
-var top : Space setget setTop;
-var bottom : Space setget setBottom;
-var left : Space setget setLeft;
-var right : Space setget setRight;
-var topLeft : Space setget setTopLeft;
-var topRight : Space setget setTopRight;
-var bottomLeft : Space setget setBottomLeft;
-var bottomRight : Space setget setBottomRight;
+var top : Space;
+var bottom : Space;
+var left : Space;
+var right : Space;
+var topLeft : Space;
+var topRight : Space;
+var bottomLeft : Space;
+var bottomRight : Space;
+
+"""
+enum Directions{
+	TOP,
+	BOTTOM,
+	LEFT,
+	RIGHT,
+	TOP_LEFT,
+	TOP_RIGHT,
+	BOTTOM_LEFT,
+	BOTTOM_RIGHT
+}
+var relativeStoreLocations := [null, null, null, null, null, null, null, null];
+"""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,14 +34,7 @@ func _init():
 
 #TODO: how to implement without cyclic dependency
 func onLand():
-	pass
-
-func getOptions() -> Array:
-	#Prompt to stop
-	return options;
-
-func optionHandler(option : String):
-	pass
+	print("You landed on this space!");
 
 # Directions
 func setTop(space : Space):

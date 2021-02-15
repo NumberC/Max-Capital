@@ -12,7 +12,7 @@ func _ready():
 func _init(maxRoll : int):
 	self.maxRoll = maxRoll;
 
-func getDiceRoll():
+func getDiceRoll() -> int:
 	return randomGenerator.randi_range(1, maxRoll);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

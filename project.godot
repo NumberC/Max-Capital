@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ShopHandlers/ShopUpgrade.gd"
 }, {
+"base": "Space",
+"class": "SleepSpace",
+"language": "GDScript",
+"path": "res://Scripts/Spaces/SleepSpace.gd"
+}, {
 "base": "Node",
 "class": "Space",
 "language": "GDScript",
@@ -89,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Core/Stock.gd"
 }, {
+"base": "Space",
+"class": "StockMarket",
+"language": "GDScript",
+"path": "res://Scripts/Spaces/StockMarket.gd"
+}, {
 "base": "Node",
 "class": "StockPricer",
 "language": "GDScript",
@@ -98,6 +108,11 @@ _global_script_classes=[ {
 "class": "StockTransaction",
 "language": "GDScript",
 "path": "res://Scripts/StockHandlers/StockTransaction.gd"
+}, {
+"base": "Space",
+"class": "VentureSpace",
+"language": "GDScript",
+"path": "res://Scripts/Spaces/VentureSpace.gd"
 } ]
 _global_script_class_icons={
 "Bank": "",
@@ -114,10 +129,13 @@ _global_script_class_icons={
 "ShopPricer": "",
 "ShopTransaction": "",
 "ShopUpgrade": "",
+"SleepSpace": "",
 "Space": "",
 "Stock": "",
+"StockMarket": "",
 "StockPricer": "",
-"StockTransaction": ""
+"StockTransaction": "",
+"VentureSpace": ""
 }
 
 [application]

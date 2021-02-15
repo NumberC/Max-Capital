@@ -13,7 +13,6 @@ func _init(price : float, value : float):
 	self.price = price;
 	self.value = value;
 	self.maxCapital = 0.5 * value;
-	pass
 
 func setPrice(newPrice : float):
 	price = newPrice;

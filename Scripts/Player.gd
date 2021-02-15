@@ -1,12 +1,14 @@
 extends Node
 class_name Player
 
+const START_CASH = 2000;
+
 var stocks : Dictionary = {} setget ,getStocks;
 var shops : Array;
 var suits : Array;
-var cash : int setget setCash, getCash;
-var networth : int setget setNetworth, getNetworth;
-var promotionLevel : int setget setPromotionLevel, getPromotionLevel;
+var cash : int = START_CASH setget setCash, getCash;
+var networth : int = START_CASH setget setNetworth, getNetworth;
+var promotionLevel : int = 0 setget setPromotionLevel, getPromotionLevel;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +29,8 @@ func getCash() -> int:
 	
 func setCash(newCash : int):
 	cash = newCash;
-	
+
+#TODO: networth is just adding up all assets
 func getNetworth() -> int:
 	return networth;
 	
