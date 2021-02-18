@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fadi.png-179e5070adbe57cecff66dd0eaeb9dca.stex"
+path="res://.import/Fadi.png-9a4989dd03de3decfee2ab034c712d44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Fadi.png"
-dest_files=[ "res://.import/Fadi.png-179e5070adbe57cecff66dd0eaeb9dca.stex" ]
+source_file="res://Assets/Characters/Fadi/Fadi.png"
+dest_files=[ "res://.import/Fadi.png-9a4989dd03de3decfee2ab034c712d44.stex" ]
 
 [params]
 

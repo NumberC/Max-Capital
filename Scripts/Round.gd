@@ -25,17 +25,17 @@ var currentRoll : int;
 func _ready():
 	pass # Replace with function body.
 
-func _init(chosenMap : Map):
-	map = chosenMap;
+func _init(choosenMap : Map, choosenPlayers : Array):
+	map = choosenMap;
+	players = choosenPlayers;
+	
 	var maxDieRoll := map.getMaxDiceRoll();
 	die = Die.new(maxDieRoll);
-	
-	players.append(Player.new("Bob"));
 	
 	for i in players:
 		playerControllers.append(PlayerController.new(i, map.getBank()));
 	
-	gameLoop();
+	#gameLoop();
 	
 
 func gameLoop():
@@ -45,7 +45,8 @@ func gameLoop():
 		var controller : PlayerController = playerController;
 		
 		while remainingRoll > 0:
-			movePlayer(controller);
+			
+			movePlayer(controller, yield());
 			remainingRoll -= 1;
 		
 		#TODO: ask would you like to land here
@@ -56,16 +57,15 @@ func gameLoop():
 			controller.getCurrentSpace().onLand();
 		else:
 			print("F")
-			movePlayer(controller)
+			movePlayer(controller, yield())
 			
-func movePlayer(controller : PlayerController):
+func movePlayer(controller : PlayerController, userInput : int):
 	var currentPosition : Space = controller.getCurrentSpace();
-	var userInput = getUserInput();
 	
 	#TODO: properly wait for user input
 	while not userInput in getSpaceDirections(currentPosition):
 		print("Try again!")
-		userInput = getUserInput()
+		userInput = yield();
 
 	var newSpace : Space = getSpaceFromInput(userInput, currentPosition);
 	controller.setCurrentSpace(newSpace);
