@@ -16,7 +16,7 @@ func playBtnClick():
 	get_tree().change_scene("res://Assets/Scenes/PlayType.tscn");
 
 func settingsBtnClick():
-	print("Go to settings");
+	get_tree().change_scene("res://Assets/Scenes/Settings.tscn");
 
 func leaderboardBtnClick():
 	print("Go to leaderboard");

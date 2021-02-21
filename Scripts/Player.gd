@@ -14,8 +14,8 @@ var promotionLevel : int = 0 setget setPromotionLevel, getPromotionLevel;
 func _ready():
 	pass # Replace with function body.
 
-func _init(name : String):
-	self.name = name;
+func _init():
+	#self.name ?
 	pass
 
 func setPromotionLevel(newPromotion : int):
@@ -59,6 +59,10 @@ func getSuits() -> Array:
 func addSuit(suit):
 	if !suits.has(suit):
 		suits.append(suit);
+	
+func _input(event):
+	if event.is_action("ui_up"):
+		print("WOO");
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

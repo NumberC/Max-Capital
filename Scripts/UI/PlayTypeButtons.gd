@@ -8,6 +8,7 @@ func _ready():
 	onlineBtn.connect("pressed", self, "onlineClick");
 	
 func localClick():
+	get_tree().change_scene("res://Assets/Scenes/Game.tscn")
 	print("You're playing locally");
 
 func onlineClick():

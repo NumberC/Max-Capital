@@ -21,8 +21,24 @@ var currentPlayer : Player;
 var currentRemainingRoll : int;
 var currentRoll : int;
 
+signal pauseForInput(direction);
+signal playerMoved;
+var pauseSignalName := "pauseForInput";
+var movedSignalName := "playerMoved";
+
+onready var playerSprite := get_parent().get_node("PlayerS");
+#Priorities:
+#	- initialize all players at Bank
+#	- roll die
+#	- let players move in available directions
+#	- confirm landing
+#	- move on to next player and repeat
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#TODO: get rid of playersprite from here
+	playerSprite.position.x = 550;
+	playerSprite.position.y = 100;
 	pass # Replace with function body.
 
 func _init(choosenMap : Map, choosenPlayers : Array):
@@ -32,44 +48,61 @@ func _init(choosenMap : Map, choosenPlayers : Array):
 	var maxDieRoll := map.getMaxDiceRoll();
 	die = Die.new(maxDieRoll);
 	
+	#set all players at bank and create controllers
 	for i in players:
 		playerControllers.append(PlayerController.new(i, map.getBank()));
 	
-	#gameLoop();
+	print("Starting game loop")
+	gameLoop();
 	
 
 func gameLoop():
-	for playerController in playerControllers:
-		var roll := die.getDiceRoll();
-		var remainingRoll := roll;
-		var controller : PlayerController = playerController;
-		
-		while remainingRoll > 0:
+	while true:
+		for playerController in playerControllers:
+			var roll := die.getDiceRoll();
+			var remainingRoll := roll;
+			var controller : PlayerController = playerController;
+			print("You rolled a " + str(roll));
 			
-			movePlayer(controller, yield());
-			remainingRoll -= 1;
-		
-		#TODO: ask would you like to land here
-		print("Would you like to land here?")
-		var isLanding : bool = true;
-		if isLanding:
-			print("you landed")
-			controller.getCurrentSpace().onLand();
-		else:
-			print("F")
-			movePlayer(controller, yield())
+			while remainingRoll > 0:
+				movePlayer(controller);
+				yield(self, movedSignalName);
+				remainingRoll -= 1;
 			
-func movePlayer(controller : PlayerController, userInput : int):
+			#TODO: ask would you like to land here
+			print("Would you like to land here?")
+			var isLanding : bool = true;
+			if isLanding:
+				print("you landed")
+				controller.getCurrentSpace().onLand();
+			else:
+				print("F")
+				movePlayer(controller);
+				yield(self, movedSignalName);
+			
+func movePlayer(controller : PlayerController):
+	var userInput : int = yield(self, pauseSignalName);
 	var currentPosition : Space = controller.getCurrentSpace();
 	
-	#TODO: properly wait for user input
 	while not userInput in getSpaceDirections(currentPosition):
 		print("Try again!")
-		userInput = yield();
+		userInput = yield(self, pauseSignalName);
+	
+	#TODO: delete
+	match userInput:
+		Directions.TOP:
+			playerSprite.position.y -= 50;
+		Directions.LEFT:
+			playerSprite.position.x -= 50;
+		Directions.RIGHT:
+			playerSprite.position.x += 50;
+		Directions.BOTTOM:
+			playerSprite.position.y += 50;
 
 	var newSpace : Space = getSpaceFromInput(userInput, currentPosition);
 	controller.setCurrentSpace(newSpace);
 	print(controller.getCurrentSpace());
+	emit_signal(movedSignalName);
 
 func getSpaceDirections(space : Space) -> Array:
 	var directions := [];
@@ -113,9 +146,15 @@ func getSpaceFromInput(input : int, space : Space) -> Space:
 			return space.bottomRight;
 	return null;
 
-#TODO: get actual user input
-func getUserInput() -> int:
-	return Directions.TOP;
+func _input(event):
+	if event.is_action("ui_up"):
+		emit_signal(pauseSignalName, Directions.TOP)
+	if event.is_action("ui_right"):
+		emit_signal(pauseSignalName, Directions.RIGHT)
+	if event.is_action("ui_left"):
+		emit_signal(pauseSignalName, Directions.LEFT)
+	if event.is_action("ui_down"):
+		emit_signal(pauseSignalName, Directions.BOTTOM)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
