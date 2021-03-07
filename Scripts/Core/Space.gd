@@ -51,7 +51,7 @@ func setLeft(space : Space):
 
 func setRight(space : Space):
 	right = space;
-	space.left = space;
+	space.left = self;
 	
 func setTopLeft(space : Space):
 	topLeft = space;
