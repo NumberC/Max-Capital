@@ -11,3 +11,7 @@ lib/
 *.translation
 export_presets.cfg
 .mono/
+
+# VSCode Folders
+.vscode
+.vscode/*

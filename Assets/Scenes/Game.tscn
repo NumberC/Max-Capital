@@ -47,14 +47,14 @@ animations = [ {
 "name": "Sus",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Crying",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "CryingV2",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Idle",
 "speed": 6.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 21 ) ],
@@ -62,9 +62,9 @@ animations = [ {
 "name": "Happy",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "Crying",
+"name": "Idle",
 "speed": 6.0
 } ]
 

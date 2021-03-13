@@ -4,7 +4,6 @@ class_name Player
 const START_CASH = 2000;
 
 var stocks : Dictionary = {} setget ,getStocks;
-var shops : Array;
 var suits : Array;
 var cash : int = START_CASH setget setCash, getCash;
 var networth : int = START_CASH setget setNetworth, getNetworth;
@@ -28,30 +27,36 @@ func getCash() -> int:
 	return cash;
 	
 func setCash(newCash : int):
+	var prevCash = cash;
 	cash = newCash;
+	setNetworth(getNetworth() + (newCash-prevCash));
+
+func addCash(addedCash : int):
+	cash += addedCash;
+
+func spendCash(spentCash : int):
+	cash -= spentCash;
 
 #TODO: networth is just adding up all assets
 func getNetworth() -> int:
 	return networth;
-	
+
+func addToNetworth(addedWorth : int):
+	networth += addedWorth
+
+func takeFromNetworth(takenWorth : int):
+	networth -= takenWorth
+
 func setNetworth(newNetworth : int):
 	networth = newNetworth;
-	
-func getShops() -> Array:
-	return shops;
-	
-func addShop(shop : Shop):
-	shops.append(shop);
-	
-func removeShop(shop : Shop):
-	if shops.has(shop):
-		shops.remove(shops.find(shop));
 
-func hasShop(shop : Shop):
-	return shops.has(shop);
+#Should we have a refresh networth?
 
 func getStocks() -> Dictionary:
 	return stocks;
+
+func getStock(district) -> int:
+	return stocks[district];
 	
 func getSuits() -> Array:
 	return suits;
@@ -59,10 +64,6 @@ func getSuits() -> Array:
 func addSuit(suit):
 	if !suits.has(suit):
 		suits.append(suit);
-	
-func _input(event):
-	if event.is_action("ui_up"):
-		print("WOO");
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

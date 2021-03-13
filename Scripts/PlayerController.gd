@@ -7,8 +7,11 @@ var previousSpace : Space setget setPreviousSpace, getPreviousSpace;
 var originalSpace : Space setget setOriginalSpace, getOriginalSpace;
 var previousSpaces : Array = [];
 
-var currentDirection : int;
-var originalDirection : int;
+#direction while player is still moving
+var currentDirection : int setget setCurrentDirection, getCurrentDirection;
+
+#direction before player was moving 
+var originalDirection : int setget setOriginalDirection, getOriginalDirection;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,6 +51,25 @@ func removePreviousSpace():
 
 func clearPreviousSpaces():
 	previousSpaces.clear();
+
+func setCurrentDirection(newDirection : int):
+	currentDirection = newDirection;
+
+func getCurrentDirection() -> int:
+	return currentDirection;
+
+func setOriginalDirection(newDirection : int):
+	originalDirection = newDirection;
+
+func getOriginalDirection() -> int:
+	return originalDirection
+
+func moveBack(currentPosition : Space, newSpace : Space):
+	if previousSpaces.size() > 0 and newSpace == previousSpaces.back():
+		previousSpaces.pop_back();
+	else:
+		addPreviousSpace(currentPosition);
+	print(previousSpaces);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

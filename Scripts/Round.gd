@@ -80,56 +80,45 @@ func turn(controller : PlayerController):
 		print("Remaining ROll: " + str(remainingRoll));
 
 	#TODO: ask would you like to land here
+	#Land the player
 	print("Would you like to land here?")
 	var isLanding : bool = true;
-	if isLanding:
-		landPlayer(controller)
+	landPlayer(controller, isLanding);
+
+	controller.clearPreviousSpaces();
+	return emit_signal(turnSignalName);
+
+func landPlayer(controller : PlayerController, decision : bool):
+	if decision:
+		print("you landed")
+		var currentSpace := controller.getCurrentSpace();
+		currentSpace.onLand();
+		controller.setOriginalSpace(currentSpace);
+		controller.setOriginalDirection(controller.getCurrentDirection());
+		#controller.setPreviousSpace()
 	else:
 		print("F")
 		movePlayer(controller);
 		yield(self, movedSignalName);
 
-	controller.clearPreviousSpaces();
-	return emit_signal(turnSignalName);
-
-func landPlayer(controller : PlayerController):
-	print("you landed")
-	var currentSpace := controller.getCurrentSpace();
-	currentSpace.onLand();
-	controller.setOriginalSpace(currentSpace);
-	controller.originalDirection = controller.currentDirection;
-	#controller.setPreviousSpace()
-
 func movePlayer(controller : PlayerController):
 	var userInput : int = yield(self, pauseSignalName);
 	var currentPosition : Space = controller.getCurrentSpace();
 
-	var isOnOriginalSpace := controller.getCurrentSpace() == controller.getOriginalSpace();
-	var isGoingBack := controller.currentDirection == getOppositeDirection(controller.originalDirection);
-
-	while not userInput in getSpaceDirections(currentPosition) or (isOnOriginalSpace and isGoingBack):
+	while not userInput in getAvailableDirections(controller, currentPosition):
 		print("Try again!")
 		userInput = yield(self, pauseSignalName);
-		isGoingBack = userInput == getOppositeDirection(controller.originalDirection);
 
-	controller.currentDirection = userInput;
-	print("Current: " + str(controller.currentDirection));
-	print("Orig: " + str(controller.originalDirection));
+	controller.setCurrentDirection(userInput);
 
 	#TODO: delete
 	spriteMover(userInput);
-
-	#controller.setPreviousSpace(currentPosition);
 
 	var newSpace : Space = getSpaceFromInput(userInput, currentPosition);
 	controller.setCurrentSpace(newSpace);
 
 	#if they move back, change the list
-	if controller.previousSpaces.size() > 0 and newSpace == controller.previousSpaces.back():
-		controller.previousSpaces.pop_back();
-	else:
-		controller.addPreviousSpace(currentPosition);
-	print(controller.previousSpaces);
+	controller.moveBack(currentPosition, newSpace);
 
 	emit_signal(movedSignalName);
 
@@ -161,6 +150,20 @@ func spriteMover(userInput):
 			playerSprite.position.y += 70;
 			playerSprite.position.x += 70;
 
+# Directions that a player can take, given their position and space
+func getAvailableDirections(controller : PlayerController, space : Space) -> Array:
+	var possibleDirections := getSpaceDirections(space);
+
+	var isOnOriginalSpace := controller.getCurrentSpace() == controller.getOriginalSpace();
+
+	var availableDirections := possibleDirections;
+	if isOnOriginalSpace:
+		availableDirections.erase(getOppositeDirection(controller.originalDirection))
+	
+	return availableDirections;
+
+# Directions that have spaces and are technically possible to travel on
+# but may not be within game rules
 func getSpaceDirections(space : Space) -> Array:
 	var directions := [];
 
