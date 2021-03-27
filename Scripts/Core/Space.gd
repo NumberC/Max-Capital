@@ -33,8 +33,11 @@ func _init():
 	pass
 
 #TODO: how to implement without cyclic dependency
-func onLand():
-	print("You landed on this space!");
+func onLand(controller : TestController):
+	print("You landed on this space!");\
+
+func onPass():
+	print("You passed")
 
 # Directions
 func setTop(space : Space):

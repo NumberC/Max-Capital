@@ -1,7 +1,6 @@
 extends Node
 class_name District
 
-var districtStock : Stock = Stock.new() setget ,getStock;
 var color : Color;
 var spaces : Array setget ,getSpaces;
 var playerShopCount := {};
@@ -13,9 +12,6 @@ func _ready():
 
 func _init():
 	pass
-
-func getStock() -> Stock:
-	return districtStock;
 
 func getSpaces() -> Array:
 	return spaces;

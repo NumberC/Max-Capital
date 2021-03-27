@@ -92,7 +92,7 @@ func landPlayer(controller : PlayerController, decision : bool):
 	if decision:
 		print("you landed")
 		var currentSpace := controller.getCurrentSpace();
-		currentSpace.onLand();
+		#currentSpace.onLand();
 		controller.setOriginalSpace(currentSpace);
 		controller.setOriginalDirection(controller.getCurrentDirection());
 		#controller.setPreviousSpace()

@@ -17,7 +17,7 @@ func buyStock(stock : Stock, player : Player, qty : int):
 	player.stocks[stock] += qty;
 	
 	#buying can affect price
-	StockPricer.setStockPriceByDemand(stock, qty);
+	#StockPricer.setStockPriceByDemand(stock, qty);
 
 func sellStock(stock : Stock, player : Player, qty : int):
 	var totalGain = qty * stock.getStockPrice();
@@ -27,7 +27,7 @@ func sellStock(stock : Stock, player : Player, qty : int):
 	player.stocks[stock] -= qty;
 	
 	#selling can affect price
-	StockPricer.setStockPriceByDemand(stock, -qty);
+	#StockPricer.setStockPriceByDemand(stock, -qty);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

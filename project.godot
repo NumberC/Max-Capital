@@ -29,7 +29,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/District.gd"
 }, {
-"base": "EditorVCSInterface",
+"base": "Node",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Scripts/Game.gd"
+}, {
+"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
@@ -85,14 +90,19 @@ _global_script_classes=[ {
 "path": "res://Scripts/Spaces/StockMarket.gd"
 }, {
 "base": "Node",
-"class": "StockPricer",
-"language": "GDScript",
-"path": "res://Scripts/StockHandlers/StockPricer.gd"
-}, {
-"base": "Node",
 "class": "StockTransaction",
 "language": "GDScript",
 "path": "res://Scripts/StockHandlers/StockTransaction.gd"
+}, {
+"base": "Shop",
+"class": "Tax",
+"language": "GDScript",
+"path": "res://Scripts/Shops/Tax.gd"
+}, {
+"base": "Node",
+"class": "TestController",
+"language": "GDScript",
+"path": "res://Scripts/TestController.gd"
 }, {
 "base": "Space",
 "class": "VentureSpace",
@@ -104,6 +114,7 @@ _global_script_class_icons={
 "CustomMap": "",
 "Die": "",
 "District": "",
+"Game": "",
 "GitAPI": "",
 "Map": "",
 "Player": "",
@@ -115,8 +126,9 @@ _global_script_class_icons={
 "Space": "",
 "Stock": "",
 "StockMarket": "",
-"StockPricer": "",
 "StockTransaction": "",
+"Tax": "",
+"TestController": "",
 "VentureSpace": ""
 }
 
